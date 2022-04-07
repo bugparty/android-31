@@ -17,5 +17,6 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v2
         with:
+          context: ./android_sdk11
           push: true
           tags: bowmanhan/android-ndk-builder:latest
