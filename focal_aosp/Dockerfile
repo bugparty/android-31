@@ -1,11 +1,5 @@
 FROM ubuntu:focal
-#### for China 
-RUN rm /etc/apt/sources.list
-RUN echo "deb http://mirrors.bfsu.edu.cn/ubuntu/ focal main restricted universe multiverse" | tee /etc/apt/sources.list
-RUN echo "deb http://mirrors.bfsu.edu.cn/ubuntu/ focal-updates main restricted universe multiverse" >> /etc/apt/sources.list
-RUN echo "deb http://mirrors.bfsu.edu.cn/ubuntu/ focal-backports main restricted universe multiverse" >> /etc/apt/sources.list
-RUN echo "deb http://mirrors.bfsu.edu.cn/ubuntu/ focal-security main restricted universe multiverse" >> /etc/apt/sources.list
-#### for Chine end
+
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update -y && apt-get install -y software-properties-common
 RUN add-apt-repository -y ppa:deadsnakes/ppa
@@ -24,6 +18,13 @@ chmod +x /usr/local/bin/repo && \
 which repo
 ENV REPO_URL='https://mirrors.bfsu.edu.cn/git/git-repo/'
 #### For China End
+#### for China 
+RUN rm /etc/apt/sources.list
+RUN echo "deb http://mirrors.bfsu.edu.cn/ubuntu/ focal main restricted universe multiverse" | tee /etc/apt/sources.list
+RUN echo "deb http://mirrors.bfsu.edu.cn/ubuntu/ focal-updates main restricted universe multiverse" >> /etc/apt/sources.list
+RUN echo "deb http://mirrors.bfsu.edu.cn/ubuntu/ focal-backports main restricted universe multiverse" >> /etc/apt/sources.list
+RUN echo "deb http://mirrors.bfsu.edu.cn/ubuntu/ focal-security main restricted universe multiverse" >> /etc/apt/sources.list
+#### for Chine end
 RUN pip install pycrypto
 ENV USER=android11-docker
 ARG USER_ID=1000
